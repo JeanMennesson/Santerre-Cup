@@ -1,0 +1,36 @@
+.team-show-card {
+  background: white;
+  padding: 20px 30px;
+  margin: 30px auto;
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+  h1 {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 40px;
+    margin: 20px auto;
+  }
+  h3 {
+    font-size: 32px;
+    font-style: oblique;
+    margin: 20px auto;
+  }
+}
+
+.team-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px -15px;
+}
+
+.team-content-center {
+  text-align: center;
+}
+
+.team-show-buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+

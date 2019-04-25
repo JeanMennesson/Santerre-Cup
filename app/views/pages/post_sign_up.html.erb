@@ -1,0 +1,6 @@
+<h1>Inscription terminée <%= current_user.profile.first_name %> !</h1>
+
+<p>La création de ton compte a bien été enregistrée. Valide ton adresse mail en cliquant sur le lien que nous t’avons envoyé dans le mail de bienvenue. N’oublie de checker tes spams !
+</p>
+
+<%= link_to 'Me pré-inscrire', new_participant_path, class: "btn btn-primary" %>

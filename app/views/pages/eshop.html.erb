@@ -1,0 +1,10 @@
+<h1>Yo yo</h1>
+
+<%= User.all.each do |u| %>
+  <%= print u.profile %>
+<% end  %>
+
+
+<%= Participant.all.each do |p| %>
+  <%= print p.user.profile %>
+<% end %>

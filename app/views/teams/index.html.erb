@@ -1,0 +1,56 @@
+<div class="container-fluid">
+  <h1 class="team-title">Équipes inscrites</h1>
+  <div class="row">
+    <div class="col-xs-12 col-md-6">
+      <div class="team-card">
+        <h1>Tournoi Masculin</h1>
+          <div class="row-special">
+            <% if !@men_teams.nil? %>
+              <% @men_teams.each do |men_team| %>
+                <div class="col-xs-12 col-sm-5 col-md-3 team">
+                  <div class="team-description">
+                    <h2><%= men_team.name %></h2>
+                    <p>Capitaine <%= men_team.user.name %></p>
+                  </div>
+                  <a class="team-link" href="<%= team_path(men_team) %>" ></a>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-6">
+      <div class="team-card">
+        <h1>Tournoi Féminin</h1>
+          <div class="row-special">
+            <% if !@women_teams.nil? %>
+              <% @women_teams.each do |women_team| %>
+              <div class="col-xs-12 col-sm-5 col-md-3 team">
+                <div class="team-description">
+                  <h2><%= women_team.name %></h2>
+                  <p>Capitaine <%= women_team.user.name %></p>
+                </div>
+                <a class="team-link" href="<%= team_path(women_team) %>"></a>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div class="col-xs-12 col-md-10 offset-md-1">
+      <h1 class="team-title">Ton équipe n'est pas listée ?</h1>
+      <div class="team-card">
+        <p>Elle est soit en cours de validation par le Staff, soit elle n'a pas encore été créée. Tu peux proposer ton équipe au Staff. Une fois la demande de pré-inscription de ton équipe validée, tu seras alors considéré(e) comme le/la capitaine de cette équipe. Les membres de ton équipe pourront alors la rejoindre et valider leur inscription une fois que tu auras accepté leur demande.</p>
+        <p class="lead">ATTENTION ! Tu ne peux proposer qu'une équipe et/ou faire une seule demande pour rejoindre une équipe à la fois.</p>
+        <p>N'hésitez pas à nous joindre via <%= link_to "le formulaire", nous_contacter_path %> si vous rencontrez le moindre souci concernant les inscriptions.</p>
+        <div class="align-buttons">
+          <%= link_to "Je propose mon équipe", new_team_path, class: 'btn btn-primary' if current_user.profile.inactive? && !current_user.profile.spectator?%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="show-profile-card">
+        <h1>Mon profil </h1>
+        <p>Très chers tous, je m'appelle <strong><%= @profile.first_name%> <%=@profile.last_name %></strong>.<p>
+        <% if @profile.gender == "male" %>
+          <p>Je suis un (bel) <strong>homme</strong>,</p>
+        <% else %>
+          <p>Je suis une <strong>femme</strong>,</p>
+        <% end %>
+        <p>qui peut être <%= "jointe" if @profile.gender == "female" %><%="joint" if @profile.gender == "male" %> à l'adresse mail suivante : <strong><%= @profile.user.email %></strong></p>
+        <p>ou alors par téléphone au <strong><%= @profile.phone_number %></strong>.</p>
+        <p>Pour cette IVème édition de la Santerre Cup, je serai là en tant que <strong>
+          <% if @profile.role == "spectator" %>
+            <% if @profile.gender == "male" %>
+              spectateur</strong>, si le Staff accepte ma demande.</p>
+            <% else %>
+              spectatrice</strong>, si le Staff accepte ma demande.</p>
+            <% end %>
+          <% else %>
+            <% if @profile.gender == "male" %>
+              joueur.</strong></p>
+            <% else %>
+              joueuse.</strong></p>
+            <% end %>
+          <% end %>
+        <% if @profile.dinner? %>
+          <p> Je serai <strong>présent</strong> pour déguster l'excellent dîner que le Staff nous a prévu.</p>
+        <% else %>
+          <p>Bien que le dîner promet d'être excellent, <strong>je ne pourrai y assiter</strong>.</p>
+        <% end %>
+        <% if @profile.party? %>
+          <p>Bien entendu, <strong>je participerai à la soirée</strong>.</p>
+        <% else %>
+          <p>La soirée étant trop tardive, <strong>je n'y participerai donc pas</strong>.</p>
+        <% end %>
+        <p>Si jamais ces informations ne sont plus à jour, je peux à tout moment les éditer en cliquant sur le bouton juste en-dessous.</p>
+        <div class="align-buttons">
+          <%= link_to "Mettre à jour mes informations", edit_profile_path(@profile), class: "btn btn-primary" %>
+          <% if Participant.where(user_id: current_user.id, status: 'accepted').empty? %>
+            <%= link_to "Voir toutes les équipes", teams_path, class: 'btn btn-primary' %>
+          <% else %>
+            <%= link_to "Voir mon équipe", team_path(Participant.where(user_id: current_user.id, status: 'accepted')[0].team_id), class: 'btn btn-primary'%>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

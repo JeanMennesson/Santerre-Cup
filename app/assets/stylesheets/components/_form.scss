@@ -1,0 +1,53 @@
+.form-login {
+  background: white;
+  padding: 10px 20px;
+  margin: 50px 0px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  h2 {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  .btn {
+    width: 100%;
+    margin-bottom: 20px
+  }
+}
+
+.santerre-form {
+  background: white;
+  padding: 10px 20px;
+  margin: 50px 0px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+  h3 {
+    font-size: 22px;
+    font-weight: lighter;
+    text-align: center;
+    margin-top: -30px;
+    margin-bottom: 30px;
+  }
+  p {
+    text-align: center;
+  }
+  .btn {
+    width: 40%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+  }
+}

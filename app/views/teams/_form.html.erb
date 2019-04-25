@@ -1,0 +1,13 @@
+<div class="col-xs-12 col-sm-10 offset-sm-1 col-md-6 offset-md-3">
+  <div class="form-group ">
+      <%= simple_form_for @team do |f| %>
+        <%= f.input :name, label: "Nom de l'équipe"  %>
+        <%= f.input :motto, label: "Devise de l'équipe" %>
+        <div class="aligned-buttons">
+          <%= f.submit "Valider", class: "btn btn-primary"%>
+          <% end %>
+          <%= link_to "Retour", team_path(@team), class: "btn btn-primary"%>
+        </div>
+  </div>
+</div>
+

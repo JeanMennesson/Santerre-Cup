@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="santerre-form">
+        <h1>Es-tu bien sûr ? </h1>
+        <p>Tu veux bien rejoindre l'équipe <%= @team.name %> de Capitaine <%= @team.user.name %> ?</p>
+        <p>ATTENTION ! Avant de pouvoir payer et valider définitivement ton inscription, le capitaine de l’équipe devra confirmer que tu appartiennes bien à cette équipe</p>
+        <% if current_user.profile != @team.user.profile %>
+            <%= simple_form_for @participant, :url => { :action => "create" }  do |f| %>
+            <%= f.hidden_field :team_id, value: @team.id %>
+            <%= f.button :submit, "Je rejoins cette équipe !", class: 'btn btn-primary' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

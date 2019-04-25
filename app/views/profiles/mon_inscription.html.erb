@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="mon_inscription_card">
+        <h1>Mon inscription</h1>
+        <% if current_user && @participant.nil? %>
+          <% if current_user.profile.spectator? && current_user.profile.inactive? %>
+            <p>Les places en tant que spectateur étant limitées, le Staff est en train d'étudier ta demande. Nous reviendrons très vite vers toi et tu devrais avoir une réponse sous les 2 jours. En attendant, tu peux découvrir les équipes déjà inscrites et les joueurs en cliquand sur le lien ci-dessous.</p>
+            <div class="align-buttons">
+              <%= link_to 'Voir toutes les équipes', teams_path, class: 'btn btn-primary' %>
+            </div>
+          <% elsif current_user.profile.spectator? && @profile.active? %>
+            <p>Le Staff a accepté votre demande ! <%= "Petit veinard 😉." if @profile.gender == "male"%><%= "Petite veinarde 😉." if @profile.gender == "female"%> Pour valider définitivement ton inscription, il ne te reste plus qu'à payer ta place sur la plateforme de notre partenaire Lydia.</p>
+            <div class="align-buttons">
+              <%= link_to 'Je paye ma place avec Lydia', "#", class: 'btn btn-primary' %>
+            </div>
+          <% elsif current_user.profile.spectator? && @profile.denied? %>
+            <p>Le Staff a malheureusement refusé votre demande ... Les places spectateurs sont très limitées, le Staff privilégie en effet les places pour les joueurs. Nous ne manquerons pas de te recontacter si jamais des places se libèrent.</p>
+          <% else %>
+            <p>Tu n'as pas encore fait de demande ou tu n'as aucune demande en cours. Envie de rejoindre une équipe ? Ou de créer la tienne ? N'hésite pas et fonce !</p>
+            <div class="align-buttons">
+            <%= link_to 'Voir toutes les équipes', teams_path, class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        <% elsif @profile.inactive? && !@participant.nil? %>
+          <% if @participant.denied? %>
+            <p>Capitaine <%= @participant.team.user.name %> a refusé que tu rejoignes son équipe <%= @participant.team.name %> !</p>
+            <p>Nous sommes désolé pour toi, mais tu vas devoir te trouver une autre équipe ou créer ta propre équipe si tu veux participer à notre bel événement. Dans tous les cas, tu peux  d’ores et déjà te procurer de magnifiques pulls et autres délices sur notre eshop ! </p>
+            <div class="align-buttons">
+              <%= link_to 'Voir toutes les équipes', teams_path, class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        <% else %>
+          <% if @profile.active? && @participant.pending? %>
+            <% if @profile.gender == "male"  %>
+              <p>Mein lieber <%= @profile.user.name %>,</p>
+            <% else %>
+              <p>Meine liebe <%= @profile.user.name %>,</p>
+            <% end %>
+            <p>Patience,</p>
+            <p><%= @participant.team.user.name %>, capitaine de la merveilleuse équipe <em><%= @participant.team.name %> </em>est en train d'étudier ta demande.</p>
+            <p>Quoiqu'il arrive, il a reçu un email le prévenant que tu souhaitais rejoindre son équipe.</p>
+            <p>Vive le XXIème siècle quand même.</p>
+            <p>Avec tout notre amour,</p>
+            <p>Le Staff</p>
+            <div class="align-buttons">
+              <%= link_to 'Voir toutes les équipes', teams_path, class: 'btn btn-primary' %>
+              <%= form_tag profile_participant_path(@profile), method: :delete do %>
+                <%= submit_tag 'Annuler ma demande', data: { confirm: 'Es-tu sûr de vouloir annuler ta demande ?'}, class: 'btn btn-primary'  %>
+              <% end %>
+            </div>
+          <% end %>
+          <% if @profile.active? && @participant.accepted? %>
+            <p><%= @participant.team.user.name %> a accepté votre demande. Tu es maintenant officiellement un membre de l'équipe "<%= @participant.team.name %>". Pour valider définitivement ton inscription, il ne te reste plus qu'à payer ta place sur la plateforme de notre partenaire Lydia.</p>
+            <%= link_to 'Je paye ma place avec Lydia', "#", class: 'btn btn-primary' %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

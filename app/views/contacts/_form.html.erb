@@ -1,0 +1,16 @@
+<div class="form-group">
+  <%= simple_form_for @contact do |f| %>
+    <%= f.input :name, label: "Votre nom", required: true %>
+    <%= f.input :email, label: "Votre email", required: true %>
+    <%= f.input :message, label: "Votre message", as: :text, required: true %>
+    <div class="d-none">
+      <%= f.input :nickname, hint: 'Leave this field blank!' %>
+    </div>
+    <div>
+      </br>
+      <div class="align-buttons">
+        <%= f.button :submit, 'Envoyer votre message', class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,4 @@
+<%= simple_form_for @participant, :url => { :action => "create" }  do |f| %>
+  <%= f.input :team_id, :collection => @team, :label_method => :name_with_captain, :value_method => :id,:label => "Nom de l'équipe - Capitaine ", placeholder: "Choississez votre équipe" ,prompt: 'Choississez votre équipe' %>
+  <%= f.button :submit, "Je rejoins cette équipe !", class: 'btn btn-primary' %>
+<% end %>

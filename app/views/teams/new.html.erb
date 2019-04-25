@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col col-md-8 offset-md-2">
+      <div class="santerre-form">
+        <h1>Ajouter mon équipe</h1>
+        <h3>5 joueurs min, 7 joueurs max</h3>
+
+        <%= simple_form_for @team, :url => { :action => "create" }  do |f| %>
+          <%= f.input :name, label: "Nom de l'équipe" %>
+          <%= f.input :motto, label: "Votre devise" %>
+          <%= f.input :description, as: :text, label: "Mettez en commentaire l'équipe que vous aimeriez bâtir (5 joueurs min / 7 joueurs max)", placeholder: "Benjamin Puygrenier - Ronny Rodelin etc ..." %>
+          <%= f.button :submit, "Envoyer mon équipe", class: "btn btn-primary", data: { confirm: "Êtes-vous sûr ?"} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

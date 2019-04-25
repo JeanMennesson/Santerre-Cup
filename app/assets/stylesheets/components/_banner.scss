@@ -1,0 +1,12 @@
+.banner {
+  height: calc(100vh - 6rem);
+  min-height: fit-content;
+  justify-content: space-between;
+}
+
+.svg-img {
+  background-image: url(homepage.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position-y: center;
+}

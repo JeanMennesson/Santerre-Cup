@@ -1,0 +1,243 @@
+.wrapper-home-navbar {
+  height: calc(100vh - 81px);
+  background: white;
+  color: black;
+  text-align: center;
+  background-size: cover !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .img {
+    margin: 20px auto;
+  }
+  h1 {
+    color: #002863;
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+  h3 {
+    color: #5bac1b;
+  }
+  p {
+    font-size: 25px;
+    font-weight: lighter;
+    color: rgb(255, 255, 255);
+    opacity: 0.7;
+    margin-bottom: 30px;
+  }
+}
+
+.wrapper-white-actions {
+  background: white;
+  color: black;
+  text-align: center;
+  background-size: cover !important;
+  display: flex;
+  justify-content: center;
+  padding: 0px 30px;
+  h1 {
+    margin: 30px auto;
+    color: #002863;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+  h2 {
+    font-size: 28px;
+    text-align: center;
+    opacity: 0.8;
+    margin: 40px auto;
+  }
+  h3 {
+    color: #5bac1b;
+  }
+  p {
+    font-size: 18px;
+    font-weight: lighter;
+    color: black;
+    opacity: 0.7;
+    margin-bottom: 30px;
+  }
+}
+
+.wrapper-white-navbar {
+  background: white;
+  color: black;
+  text-align: center;
+  background-size: cover !important;
+  display: flex;
+  justify-content: center;
+  padding: 0px 20px;
+  h1 {
+    margin: 30px auto;
+    color: #002863;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+  h2 {
+    font-size: 28px;
+    text-align: center;
+    opacity: 0.8;
+    margin: 40px auto;
+  }
+  h3 {
+    color: #5bac1b;
+    margin: 30px auto;
+  }
+  p {
+    font-size: 18px;
+    font-weight: lighter;
+    color: black;
+    opacity: 0.7;
+    margin-bottom: 30px;
+  }
+}
+
+.wrapper-white-home {
+  background: white;
+  color: black;
+  text-align: center;
+  background-size: cover !important;
+  display: flex;
+  justify-content: center;
+  .img {
+    margin: 20px auto;
+  }
+  h1 {
+    color: #002863;
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+  h2 {
+    font-size: 40px;
+    text-align: center;
+    opacity: 0.8;
+    margin: 40px auto;
+  }
+  h3 {
+    color: #5bac1b;
+  }
+  p {
+    font-size: 18px;
+    font-weight: lighter;
+    color: rgb(255, 255, 255);
+    opacity: 0.7;
+    margin-bottom: 30px;
+  }
+}
+
+.wrapper-gray-home {
+  background: #F4F4F4;
+  color: black;
+  background-size: cover !important;
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  h1 {
+    color: #002863;
+    font-size: 48px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  h2 {
+    font-size: 40px;
+    text-align: center;
+    opacity: 0.8;
+    margin: auto;
+    margin-bottom: 40px;
+  }
+  h3 {
+    color: #5bac1b;
+  }
+  p {
+    font-size: 18px;
+    font-weight: lighter;
+    opacity: 0.7;
+    margin-bottom: 30px;
+  }
+}
+
+.wrapper-white {
+  background: white;
+  color: black;
+  text-align: center;
+  background-size: cover !important;
+  display: flex;
+  justify-content: center;
+  .img {
+    margin: 20px auto;
+  }
+  h1 {
+    color: #002863;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+  h2 {
+    font-size: 28px;
+    text-align: center;
+    opacity: 0.8;
+    margin: 40px auto;
+  }
+  h3 {
+    color: #5bac1b;
+  }
+  p {
+    font-size: 18px;
+    font-weight: lighter;
+    color: rgb(255, 255, 255);
+    opacity: 0.7;
+    margin-bottom: 30px;
+  }
+}
+
+.wrapper-gray {
+  background: #F4F4F4;
+  color: black;
+  background-size: cover !important;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin: 30px;
+  h1 {
+    margin: 30px auto;
+    color: #002863;
+    font-size: 32px;
+    font-weight: bold;
+    text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+  }
+  h2 {
+    font-size: 28px;
+    text-align: center;
+    opacity: 0.8;
+    margin: 40px auto;
+  }
+  h3 {
+    color: #5bac1b;
+    margin: 30px auto;
+  }
+  h4 {
+    margin: 20px auto;
+    opacity: 0.8;
+  }
+  p {
+    font-size: 18px;
+    font-weight: lighter;
+    color: black;
+    opacity: 0.7;
+    margin-bottom: 30px;
+  }
+}
+
+
+@media (min-width: 992px) {
+  .wrapper-home-gray, .wrapper-home-white {
+    height: 100vh;
+  }
+ }
+
+

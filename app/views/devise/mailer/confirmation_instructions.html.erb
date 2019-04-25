@@ -1,0 +1,11 @@
+<p>Salut à toi <%= @email %>!</p>
+
+<p>Bienvenue dans la communauté Santerre Cup ! Tout le Staff est ravi que tu nous rejoignes pour cette 4ème édition de la Santerre Cup. </p>
+
+<p>Avant de continuer, il faut que tu confirmes ton adresse mail en cliquant à travers ce lien:</p>
+
+<p><%= link_to 'Confirmer mon compte', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p> @+</p>
+
+<p>Le Staff</p>

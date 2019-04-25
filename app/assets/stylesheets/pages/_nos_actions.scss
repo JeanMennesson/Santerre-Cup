@@ -1,0 +1,25 @@
+.img-action {
+  width: 400px;
+  height: 300px;
+}
+
+.img-action-2 {
+  width: 400px;
+  height: 140px;
+}
+
+.nos-actions-card {
+  margin: 30px auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: start;
+}
+
+@media (max-width: 991.98px) {
+  .nos-actions-card {
+    h4 {
+      text-align: center;
+    }
+  }
+ }

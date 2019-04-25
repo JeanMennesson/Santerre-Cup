@@ -1,0 +1,17 @@
+.align-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  .btn {
+    padding: 10px 20px;
+    margin: 20px;
+    border-radius: 5px;
+  }
+}
+
+.join-team-button {
+  position: absolute;
+  top : 10px;
+
+}

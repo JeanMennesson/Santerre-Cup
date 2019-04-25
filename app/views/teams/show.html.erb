@@ -1,0 +1,137 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+      <div class="team-show-card">
+        <div class="row">
+          <h1><%= @team.name %></h1>
+        </div>
+        <% if !@team.motto.empty? %>
+          <div class="row">
+            <h3><%= @team.motto %></h3>
+          </div>
+        <% end %>
+        <div class="team-row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+            <% if @team.status == "pending" %>
+              <p class="text-center">Patience <%= @team.user.name %>, le Staff est en train d'étudier ton équipe. Tu recevras un mail t'indiquant si ton équipe est accepté ou non par le Staff. Normalement, tu devrais recevoir une réponse dans la journée.</p>
+              <div class="align-buttons">
+                <%= link_to "Voir les équipes", teams_path, class: 'btn btn-primary' %>
+              </div>
+            <% elsif current_user == @team.user %>
+              <% if @potential_coplayers.empty? %>
+                <h2 class="text-center">Aucune demande en cours</h2>
+              <% else %>
+                <h2>Demandes en cours</h2>
+                <table class="table table-striped table-hover table-responsive-md">
+                  <thead class="team-content-center">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Adresse email</th>
+                      <th scope="col">Numéro de téléphone</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody class="team-content-center">
+                    <% @potential_coplayers.each_with_index do |potential_coplayer, index| %>
+                      <tr>
+                        <th scope='row'><%= index +1 %></th>
+                        <td><%= potential_coplayer.user.name %></td>
+                        <td><%= potential_coplayer.user.email %></td>
+                        <td><%= potential_coplayer.user.profile.phone_number %></td>
+                        <td class="team-show-buttons">
+                          <%= form_tag accept_player_profile_team_path(@team), method: :put do %>
+                            <%= hidden_field_tag :participant_id, potential_coplayer.id %>
+                            <%= submit_tag 'Accepter', class: 'btn btn-primary' %>
+                          <% end %>
+                          <%= form_tag deny_player_profile_team_path(@team), method: :put do %>
+                            <%= hidden_field_tag :participant_id, potential_coplayer.id %>
+                            <%= submit_tag 'Refuser', class: 'btn btn-primary' %>
+                          <% end %>
+                        </td>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              <% end %>
+              <% else %>
+            <% end %>
+          </div>
+        </div>
+        <div class="team-row">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 offset-lg-1">
+            <% if @team.status == "accepted" %>
+              <h2>Équipe officielle</h2>
+              <table class="table table-striped table-hover table-responsive-md">
+                <thead class="team-content-center">
+                  <tr>
+                    <th>#</th>
+                    <th>Nom</th>
+                    <th>Rôle</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody class="team-content-center">
+                  <tr>
+                    <th scope='row'>1</th>
+                    <td><%= @team.user.name %></td>
+                    <td>Capitaine</td>
+                    <td><%= @team.status %></td>
+                  </tr>
+                  <% @coplayers.each_with_index do |coplayer, index| %>
+                    <tr>
+                      <th scope='row'> <%= index + 2 %></th>
+                      <td><%= coplayer.user.name %></td>
+                      <td>Joueur</td>
+                      <td><%= coplayer.status %></td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+              <div class="align-buttons">
+                <% if @team.participants.accepted.count >= 6 || @team.status == "finished" %>
+                    <p>Cette équipe est complète !</p>
+                <% end %>
+                <% if current_user.profile.gender == @team.user.profile.gender && @team.participants.accepted.count < 6 %>
+                  <% if current_user.profile.player? && current_user.profile.inactive? %>
+                      <%= button_to "Je veux rejoindre cette équipe", new_team_participant_path(@team), method: :get, class: "btn btn-warning" %>
+                  <% end %>
+                <% end %>
+                <%= link_to "Voir toutes les équipes", teams_path, class: 'btn btn-primary' %>
+                <%= link_to "Mettre à jour mon équipe", edit_team_path(@team), class: 'btn btn-primary' if current_user == @team.user %>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <!-- <h3>Commentaires</h3>
+
+          <h3 id='comments_title'>
+            <% if @team.comments.count <= 1 %>
+              <p><%= @team.comments.count%> commentaire</p>
+            <% else %>
+              <p><%= @team.comments.count%> commentaires</p>
+            <% end %>
+          </h3>
+
+
+          <div id="comments">
+            <% if @team.comments.blank? %>
+              Soyer le premier à laisser un commentaires sur <%= @team.name %>
+            <% else %>
+              <% @team.comments.each do |comment| %>
+                <%= render 'comments/show', comment: comment %>
+              <% end %>
+            <% end %>
+          </div>
+
+          <%= render 'comments/form', team: @team, comment: @comment %>
+
+           -->
+
+
+
