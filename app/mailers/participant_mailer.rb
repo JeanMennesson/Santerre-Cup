@@ -1,6 +1,8 @@
 class ParticipantMailer < ApplicationMailer
   def accepted_player_confirmation(participant)
     @participant = Participant.find(participant)
+    @team = Team.find(@participant.team_id)
+    @profile = User.find(@participant.user_id).profile
 
     mail(
       to:       @participant.user.email,
@@ -10,6 +12,8 @@ class ParticipantMailer < ApplicationMailer
 
   def denied_player_cancellation(participant)
     @participant = Participant.find(participant)
+    @team = Team.find(@participant.team_id)
+    @profile = User.find(@participant.user_id).profile
 
     mail(
       to:       @participant.user.email,

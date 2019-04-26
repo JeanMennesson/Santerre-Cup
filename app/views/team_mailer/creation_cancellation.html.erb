@@ -1,8 +1,8 @@
-<h1>Cher <%= @team.user.name %></h1>
+<p>Cher <%= @team.user.name %>,</p>
 
 <p>Malheureusement, ton équipe <%= @team.name %> n'a pas été acceptée par le Staff. </p>
 
-<p>Pour gérer tout ça, <%= link_to "c'est ici", mon_inscription_profile_url(@team.user.profile.id) %></p>
+<p>Pour gérer tout ça, <%= link_to "c'est ici.", mon_inscription_profile_url(@team.user.profile.id) %></p>
 
 <p>La bise</p>
 

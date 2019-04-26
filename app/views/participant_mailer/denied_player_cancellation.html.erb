@@ -1,1 +1,21 @@
-<h1>T'es refusé gros</h1>
+<div class="wrapper-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-md">
+        <p>Cher(e) <%= @profile.first_name %></p>
+        <p>Nous sommes désolé pour toi mais <strong><%= @team.user.name %></strong> a refusé que tu rejoignes son équipe <i> <%= @team.name %></i>.</p>
+        <p>Pour valider définitivement ton inscription, il faut maintenant que tu paies ta place sur la plateforme de notre partenaire Lydia. Le lien est également disponible dans l'onglet "Mon inscription" de ton compte sur notre site internet.</p>
+      </div>
+      <div class="align-buttons">
+        <%= link_to "Je retourne à mon inscription", mon_inscription_profile_url(@profile), class: 'btn btn-primary' %>
+      </div>
+      <div class="col-md">
+        <p>Nous te souhaitons bon courage dans la poursuite de ta recherche d'équipe. N'hésite pas à faire ta propre demande de création d'équipe au staff également.</p>
+        <p>Bien amicalement,</p>
+        <p>Le Staff</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
