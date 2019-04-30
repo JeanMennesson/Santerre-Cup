@@ -21,10 +21,9 @@ gem 'pundit'
 gem 'inflections'
 gem 'mail_form'
 gem "aws-sdk-s3", require: false
-gem 'paperclip'
-gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+gem 'carrierwave'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
