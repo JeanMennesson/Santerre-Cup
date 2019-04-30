@@ -23,7 +23,7 @@ gem 'mail_form'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 gem 'fog-aws'
-gem 'carrierwave'
+gem 'carrierwave', '~> 1.2'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
