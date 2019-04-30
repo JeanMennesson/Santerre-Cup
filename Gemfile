@@ -20,6 +20,7 @@ gem 'faker'
 gem 'pundit'
 gem 'inflections'
 gem 'mail_form'
+gem "aws-sdk-s3", require: false
 
 group :development do
   gem 'web-console', '>= 3.3.0'
