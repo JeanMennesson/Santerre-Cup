@@ -8,7 +8,7 @@
         <%= simple_form_for @team, :url => { :action => "create" }  do |f| %>
           <%= f.input :name, label: "Nom de l'équipe" %>
           <%= f.input :motto, label: "Votre devise" %>
-          <%= f.input :description, as: :text, label: "Mettez en commentaire l'équipe que vous aimeriez bâtir (5 joueurs min / 7 joueurs max)", placeholder: "Benjamin Puygrenier - Ronny Rodelin etc ..." %>
+          <%= f.input :description, as: :text, label: "Très IMPORTANT, précisez ici votre équipe (5 joueurs min / 7 joueurs max). Si cette section est vide/incomplète, votre équipe sera automatiquement refusée", placeholder: "Benjamin Nivet - Mickaël Tracalfred - Youssouf Hadji ..." %>
           <%= f.button :submit, "Envoyer mon équipe", class: "btn btn-primary", data: { confirm: "Êtes-vous sûr ?"} %>
         <% end %>
       </div>

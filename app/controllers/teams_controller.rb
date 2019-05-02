@@ -1,5 +1,5 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: %i[edit update destroy]
+  before_action :set_team, only: %i[show edit update accept_player deny_player]
   before_action :set_player, only: %i[accept_player deny_player]
 
   def new
@@ -21,8 +21,7 @@ class TeamsController < ApplicationController
     @team.gender = current_user.profile.gender
     authorize @team
     if @team.save
-      @team.user.profile.update_attributes(role: :captain)
-      @team.user.profile.update_attributes(status: "active")
+      @team.user.profile.update_attributes(role: :captain, status: "active")
       redirect_to teams_path
       flash[:notice] = "Ta demande a bien été envoyée !"
     else
@@ -32,7 +31,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
     @comment = Comment.new
     @potential_coplayers = @team.participants.pending
     @coplayers = @team.participants.accepted
@@ -51,7 +49,6 @@ class TeamsController < ApplicationController
   end
 
   def accept_player
-    @team = Team.find(params[:id])
     @asking_player.update_attributes(status: "accepted")
     authorize @team
     @asking_player.save!
@@ -59,7 +56,6 @@ class TeamsController < ApplicationController
   end
 
   def deny_player
-    @team = Team.find(params[:id])
     @asking_player.update_attributes(status: "denied")
     @asking_player.user.profile.update_attributes(status: "inactive")
     authorize @team
@@ -90,6 +86,6 @@ class TeamsController < ApplicationController
   end
 
   def set_team
-    @team = Team.find_by(user_id: params[:id])
+    @team = Team.find(params[:id])
   end
 end

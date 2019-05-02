@@ -16,6 +16,12 @@ module SanterreCup
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
+    config.i18n.available_locales = [:en, :fr]
+    config.i18n.default_locale = :fr
+    # config.action_mailer.delivery_method = :postmark
+    # config.action_mailer.postmark_settings = { :api_token => "4c58b4b1-6992-44a5-8ed6-66b9157add61" }
+
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
