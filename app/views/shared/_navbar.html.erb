@@ -10,19 +10,19 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to "Notre Histoire", notre_histoire_path, class: "nav-link"   %>
+        <%= link_to "Notre histoire", notre_histoire_path, class: "nav-link"   %>
       </li>
       <li class="nav-item">
-        <%= link_to "Notre Équipe", notre_equipe_path, class: "nav-link"   %>
+        <%= link_to "Notre équipe", notre_equipe_path, class: "nav-link"   %>
       </li>
       <li class="nav-item">
-        <%= link_to "Nos Actions", nos_actions_path, class: "nav-link"   %>
+        <%= link_to "Nos actions", nos_actions_path, class: "nav-link"   %>
       </li>
       <li class="nav-item">
-        <%= link_to "Nous Soutenir", nous_soutenir_path, class: "nav-link"   %>
+        <%= link_to "Nous soutenir", nous_soutenir_path, class: "nav-link"   %>
       </li>
       <li class="nav-item">
-        <%= link_to "Nous Contacter", nous_contacter_path, class: "nav-link"   %>
+        <%= link_to "Nous contacter", nous_contacter_path, class: "nav-link"   %>
       </li>
       <% if user_signed_in? && current_user.profile.nil? %>
         <li class="nav-item dropdown">
@@ -47,7 +47,7 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Se Connecter/s'inscrire", new_user_session_path, class: "nav-link" %>
+          <%= link_to "Se connecter/s'inscrire", new_user_session_path, class: "nav-link" %>
         </li>
       <% end %>
     </ul>

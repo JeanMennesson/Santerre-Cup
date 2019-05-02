@@ -1,6 +1,6 @@
 class TeamMailer < ApplicationMailer
   def creation_confirmation(team)
-    @team = Team.find(team)
+    @team = Team.find(team.id)
 
     mail(
       to:       @team.user.email,
@@ -9,7 +9,7 @@ class TeamMailer < ApplicationMailer
   end
 
   def creation_cancellation(team)
-    @team = Team.find(team)
+    @team = Team.find(team.id)
 
     mail(
       to:       @team.user.email,

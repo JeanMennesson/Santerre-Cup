@@ -3,7 +3,7 @@
       <%= simple_form_for @team do |f| %>
         <%= f.input :name, label: "Nom de l'équipe"  %>
         <%= f.input :motto, label: "Devise de l'équipe" %>
-        <div class="aligned-buttons">
+        <div class="align-buttons">
           <%= f.submit "Valider", class: "btn btn-primary"%>
           <% end %>
           <%= link_to "Retour", team_path(@team), class: "btn btn-primary"%>

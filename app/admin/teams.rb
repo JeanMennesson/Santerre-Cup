@@ -21,15 +21,16 @@ ActiveAdmin.register Team do
   member_action :accept, method: :put do
     team = Team.find(params[:id])
     team.accepted!
+    TeamMailer.creation_confirmation(team).deliver_now
     redirect_to admin_team_path(team)
   end
 
   member_action :deny, method: :put do
     team = Team.find(params[:id])
     captain = Team.find(params[:id]).user
-    captain.profile.update_attributes(role: "player")
-    captain.profile.update_attributes(status: "inactive")
+    captain.profile.update_attributes(role: "player", status: "inactive")
     team.denied!
+    TeamMailer.creation_cancellation(team).deliver_now
     redirect_to admin_team_path(team)
   end
 

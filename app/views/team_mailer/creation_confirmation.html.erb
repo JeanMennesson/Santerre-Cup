@@ -1,8 +1,10 @@
-<p>Cher <%= @team.user.name %>,<p>
+<p><%= @team.user.name %>,<p>
 
-<p>Nous vous confirmons que votre équipe <%= @team.name %> a bien été acceptée par le Staff. Tes potes peuvent désormais s'inscrire dessus et demander à la rejoindre. Tu devras les accepter depuis ton compte Santerre Cup.</p>
+<p>Nous vous confirmons que votre équipe <%= @team.name %> a bien été acceptée par le Staff. Tes coéquipiers peuvent désormais s'inscrire et demander à rejoindre ton équipe. Pour cela, ils doivent se créer un compte sur notre site. Une fois leur inscription validée, ils peuvent te faire une demande pour rejoindre ton équipe. Tu devras accepter leurs demandes depuis ton compte Santerre Cup.</p>
 
 <p>Pour gérer les demandes, <%= link_to "c'est ici.", team_url(@team) %></p>
+
+<p>N'oublie pas que pour valider définitivement ton inscription, tu dois payer ta place via la plateforme Lydia.</p>
 
 <p>La bise</p>
 

@@ -2,10 +2,10 @@
   <div class="container">
     <div class="row">
       <div class="col-md">
-        <h1>Tu as une demande en cours</h1>
+        <p>Salut <%= @participant.team.user.name %>,</p>
         <p>Un joueur a demandé à rejoindre ton équipe ! Réponds lui vite, on compte sur toi :)</p>
         <div class="align-buttons">
-          <%= link_to "Je vais voir ça", team_path(@team), class: 'btn btn-primary' %>
+          <%= link_to "Je vais voir ça", team_url(@participant.team.id), class: 'btn btn-primary' %>
         </div>
         <div class="col-md">
           <p>La bise sur toi</p>
