@@ -27,8 +27,10 @@ gem 'carrierwave', '~> 1.2'
 gem 'postmark-rails'
 gem 'rails-i18n'
 
+
 group :development do
   gem 'web-console', '>= 3.3.0'
+  gem 'rails_real_favicon'
 end
 
 group :development, :test do
