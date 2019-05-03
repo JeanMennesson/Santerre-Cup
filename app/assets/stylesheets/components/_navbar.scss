@@ -17,3 +17,13 @@
   margin-right: 40px;
 
 }
+
+.navbar .login {
+  background-color: #002763;
+  color: white !important;
+  border-radius: 10px;
+  padding: 8px;
+  &:hover {
+    opacity: 0.9;
+  }
+}
