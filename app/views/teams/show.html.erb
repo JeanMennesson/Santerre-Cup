@@ -77,14 +77,17 @@
                       <th scope='row'>1</th>
                       <td><%= @team.user.name %></td>
                       <td>Capitaine</td>
-                      <td><%= @team.status %></td>
+                      <td><%= "Accepté" if @team.status == "accepted" %>
+                          <%= "Terminé" if @team.status == "finished" %>
+                      </td>
                     </tr>
                     <% @coplayers.each_with_index do |coplayer, index| %>
                       <tr>
                         <th scope='row'> <%= index + 2 %></th>
                         <td><%= coplayer.user.name %></td>
                         <td>Joueur</td>
-                        <td><%= coplayer.status %></td>
+                        <td><%= "Accepté" if coplayer.status == "accepted" %>
+                            <%= "Terminé" if coplayer.status == "finished" %></td>
                       </tr>
                     <% end %>
                   </tbody>

@@ -4,7 +4,7 @@ class TeamMailer < ApplicationMailer
 
     mail(
       to:       @team.user.email,
-      subject:  "Ton équipe #{@team.name} a été acceptée !"
+      subject:  "Ton équipe #{@team.name} a été acceptée"
     )
   end
 
@@ -13,7 +13,7 @@ class TeamMailer < ApplicationMailer
 
     mail(
       to:       @team.user.email,
-      subject:  "Ton équipe #{@team.name} a été refusée !"
+      subject:  "Ton équipe #{@team.name} a été refusée"
     )
   end
 end

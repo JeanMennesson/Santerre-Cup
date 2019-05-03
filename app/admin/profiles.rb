@@ -22,18 +22,20 @@ ActiveAdmin.register Profile do
   member_action :accept, method: :put do
     profile = Profile.find(params[:id])
     profile.update_attributes(status: "active")
+    ProfileMailer.accepted_spectator_confirmation(profile).deliver_now
     redirect_to admin_profile_path(profile)
   end
 
   member_action :deny, method: :put do
     profile = Profile.find(params[:id])
     profile.update_attributes(status: "denied")
+    ProfileMailer.denied_spectator_cancellation(profile).deliver_now
     redirect_to admin_profile_path(profile)
   end
 
   member_action :pending, method: :put do
     profile = Profile.find(params[:id])
-    profile.update_attributes(status: "pending")
+    profile.update_attributes(status: "inactive")
     redirect_to admin_profile_path(profile)
   end
 

@@ -6,7 +6,7 @@ class ParticipantMailer < ApplicationMailer
 
     mail(
       to:       @participant.user.email,
-      subject:  "Ta demande d'équipe a été acceptée !"
+      subject:  "Ta demande d'équipe a été acceptée"
     )
   end
 
@@ -17,7 +17,7 @@ class ParticipantMailer < ApplicationMailer
 
     mail(
       to:       @participant.user.email,
-      subject:  "Ta demande pour rejoindre l'équipe #{@participant.team.name} a été refusée !"
+      subject:  "Ta demande pour rejoindre l'équipe #{@participant.team.name} a été refusée"
     )
   end
 
@@ -26,7 +26,7 @@ class ParticipantMailer < ApplicationMailer
 
     mail(
       to:       @participant.team.user.email,
-      subject:  "Tu as une demande en cours !"
+      subject:  "Tu as une demande en cours"
     )
   end
 end

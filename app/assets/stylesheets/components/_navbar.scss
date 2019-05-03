@@ -15,7 +15,9 @@
 
 .navbar .nav-item {
   margin-right: 40px;
-
+  .pointer {
+    cursor: pointer;
+  }
 }
 
 .navbar .login {

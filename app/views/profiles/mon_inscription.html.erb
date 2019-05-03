@@ -6,7 +6,7 @@
           <h1>Mon inscription</h1>
           <% if current_user && @participant.nil? %>
             <% if current_user.profile.spectator? && current_user.profile.inactive? %>
-              <p>Les places en tant que spectateur étant limitées, le Staff est en train d'étudier ta demande. Nous reviendrons très vite vers toi et tu devrais avoir une réponse sous les 2 jours. En attendant, tu peux découvrir les équipes déjà inscrites et les joueurs en cliquand sur le lien ci-dessous.</p>
+              <p>Les places en tant que spectateur étant limitées, le Staff est en train d'étudier ta demande. Nous reviendrons très vite vers toi et tu devrais avoir une réponse sous les 2 jours. En attendant, tu peux découvrir les équipes déjà inscrites et les joueurs en cliquant sur le lien ci-dessous.</p>
               <div class="align-buttons">
                 <%= link_to 'Voir toutes les équipes', teams_path, class: 'btn btn-primary' %>
               </div>
