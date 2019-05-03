@@ -1,18 +1,10 @@
-<div class="wrapper-white">
-  <div class="container">
-    <div class="row">
-      <div class="col-md">
-        <p><%= @profile.first_name %></p>
-        <p>Nous sommes désolé pour toi mais <strong><%= @team.user.name %></strong> a refusé que tu rejoignes son équipe <i> <%= @team.name %></i>.</p>
-        <p>Tu peux faire d'autres demandes aux autres capitaines <%= link_to "en cliquand ici.", teams_url %></p>
-      </div>
-      <div class="col-md">
-        <p>Nous te souhaitons bon courage dans la poursuite de ta recherche d'équipe. N'hésite pas à faire ta propre demande de création d'équipe au staff également.</p>
-        <p>Bien amicalement,</p>
-        <p>Le Staff</p>
-      </div>
-    </div>
-  </div>
+<p><%= @profile.first_name %>,</p>
+<p>Nous sommes désolé pour toi mais <strong><%= @team.user.name %></strong> a refusé que tu rejoignes son équipe <i> <%= @team.name %></i>.</p>
+<p>Tu peux faire d'autres demandes aux autres capitaines <%= link_to "en cliquant ici.", teams_url %></p>
 </div>
+<div class="col-md">
+<p>Nous te souhaitons bon courage dans la poursuite de ta recherche d'équipe. N'hésite pas à faire ta propre demande de création d'équipe au staff également.</p>
+<p>Bien amicalement,</p>
+<p>Le Staff</p>
 
 

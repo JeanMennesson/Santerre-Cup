@@ -6,7 +6,7 @@ class ParticipantMailer < ApplicationMailer
 
     mail(
       to:       @participant.user.email,
-      subject:  "Ta demande d'équipe a été acceptée"
+      subject:  "Ta demande pour rejoindre l'équipe #{@participant.team.name} a été acceptée"
     )
   end
 
