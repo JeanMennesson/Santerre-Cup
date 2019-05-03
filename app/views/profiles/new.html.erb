@@ -12,7 +12,7 @@
           <%= f.input :gender, label: 'Vous êtes', as: :radio_buttons, collection: [[ 'female', 'une femme'], [ 'male', 'un homme']], label_method: :second, value_method: :first %>
           <%= f.input :phone_number, label: "Votre numéro de téléphone", placeholder: '06.06.06.06.06' %>
           <%= f.input :role, label: "Quel est ton rôle ?", as: :radio_buttons, collection: [[:player, "Je suis un joueur"], [:spectator, "Je suis un spectateur"]], label_method: :second, value_method: :first %>
-          <%= f.input :party, label: "Seras-tu présent au dîner ?", as: :radio_buttons, collection: [[ true, "Oui, plus que jamais"], [false, "Non merci, trop gras pour moi"]], label_method: :second, value_method: :first %>
+          <%= f.input :dinner, label: "Seras-tu présent au dîner ?", as: :radio_buttons, collection: [[ true, "Oui"], [false, "Non merci"]], label_method: :second, value_method: :first %>
           <%= f.input :party, label: "Participeras-tu à la soirée ?", as: :radio_buttons, collection: [[ true, "Bien entendu"], [false, "Non, je suis trop vieux pour ça"]], label_method: :second, value_method: :first %>
           <%= f.button :submit, "Créer mon profil", class: "btn btn-primary" %>
         <% end %>
