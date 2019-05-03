@@ -2,7 +2,6 @@ class Participant < ApplicationRecord
   belongs_to :user
   belongs_to :team
   enum status: %i[pending accepted denied finished]
-  # after_create :send_request_to_captain_email
   after_update :send_accepted_participant_email, if: :status_accepted?
   after_update :send_denied_participant_email, if: :status_denied?
   validate :participant_count_within_limit, on: :create
@@ -21,10 +20,6 @@ class Participant < ApplicationRecord
       errors.add(:base, "Cette équipe ne peux plus accueillir de joueurs !")
     end
   end
-
-  # def send_request_to_captain_email
-  #   ParticipantMailer.pending_request_captain(id).deliver_now
-  # end
 
   def send_accepted_participant_email
     ParticipantMailer.accepted_player_confirmation(id).deliver_now

@@ -3,7 +3,6 @@ class Contact < MailForm::Base
   attribute :email
   attribute :message
   attribute :nickname, captcha: true
-
   validates :email, format: { with: /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i }
 
   # Declare the e-mail headers. It accepts anything the mail method
