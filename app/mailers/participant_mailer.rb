@@ -22,7 +22,7 @@ class ParticipantMailer < ApplicationMailer
   end
 
   def pending_request_captain(participant)
-    @participant = Participant.find(participant)
+    @participant = Participant.find(participant.id)
 
     mail(
       to:       @participant.team.user.email,

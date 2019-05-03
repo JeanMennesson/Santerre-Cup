@@ -25,6 +25,8 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'carrierwave', '~> 1.2'
 gem 'postmark-rails'
+gem 'rails-i18n'
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
