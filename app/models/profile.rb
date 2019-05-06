@@ -2,7 +2,7 @@ class Profile < ApplicationRecord
   belongs_to :user
   enum role: { player: 1, captain: 2, spectator: 3 }
   enum gender: { male: 0, female: 1 }
-  enum status: %i[inactive active pending denied]
+  enum status: %i[inactive active pending denied finished]
   validates :first_name, :last_name, :gender, :phone_number, :role, :party, presence: true, allow_blank: false
   validates :phone_number, format: { with: /\A(?:(?:\+|00)33|0)\s*[6-7](?:[\s.-]*\d{2}){4}\z/, message: "Format incorrect, vérifie que tu aies rentré le bon numéro" }
 
