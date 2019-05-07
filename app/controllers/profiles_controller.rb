@@ -38,6 +38,7 @@ class ProfilesController < ApplicationController
   end
 
   def mon_inscription
+    @team = Team.find_by(user_id: current_user.id)
     @participant = Participant.where(user_id: current_user.id).last
     authorize @profile
   end

@@ -1,43 +1,64 @@
-<div class="wrapper-gray-back">
+ <div class="wrapper-gray-back">
   <div class="container">
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <div class="mon_inscription_card">
           <h1>Mon inscription</h1>
-          <% if current_user && @participant.nil? %>
-            <% if current_user.profile.spectator? && current_user.profile.inactive? %>
-              <p>Les places en tant que spectateur étant limitées, le Staff est en train d'étudier ta demande. Nous reviendrons très vite vers toi et tu devrais avoir une réponse sous les 2 jours. En attendant, tu peux découvrir les équipes déjà inscrites et les joueurs en cliquant sur le lien ci-dessous.</p>
-              <div class="align-buttons">
-                <%= link_to 'Voir toutes les équipes', teams_path, class: 'btn btn-primary' %>
-              </div>
-            <% elsif current_user.profile.spectator? && @profile.active? %>
-              <p>Le Staff a accepté votre demande ! <%= "Petit veinard 😉." if @profile.gender == "male"%><%= "Petite veinarde 😉." if @profile.gender == "female"%> Pour valider définitivement ton inscription, il ne te reste plus qu'à payer ta place sur la plateforme de notre partenaire Lydia.</p>
-              <div class="align-buttons">
+            <% if @profile.captain? %>
+              <% if @profile.active? %>
+                <p>Cher(e) capitaine de la très heureuse équipe <i><%= @team.name %></i>, un grand bravo, ton équipe a été acceptée! Nous sommes ravis que tu nous rejoignes pour ce si bel événement.</p>
+                <p>Nous te faisons une entière et pleine confiance dans la constitution de ton équipe. Cette dernière doit être exactement la même que celle que tu nous as envoyée. Nous nous réservons le droit d'annuler la demande d'un joueur autre que ceux renseignés, sauf si cela est gentiment demandé en amont bien sûr!</p>
+                <p>Allez on oublie pas de payer sa place !</p>
+                <div class="align-buttons">
                 <%= link_to 'Je paye ma place avec Lydia', "https://collecte.io/santerre-cup-iveme-edition-156010", class: 'btn btn-primary', target: "_blank" %>
-              </div>
-            <% elsif current_user.profile.spectator? && @profile.denied? %>
-              <p>Le Staff a malheureusement refusé votre demande ... Les places spectateurs sont très limitées, le Staff privilégie en effet les places pour les joueurs. Nous ne manquerons pas de te recontacter si jamais des places se libèrent.</p>
-            <% elsif current_user.profile.spectator? && @profile.finished? %>
-              <p>C'est tout bon <%= current_user.profile.first_name %>, tu as payé ta place, tu es parfaitement en règle. On t'attend chaud bouillant le 29 Juin 2019 pour encourager les joueurs et mettre le feu en tribune. Une récompense sera distribuée pour le meilleur spectateur, on dit ça on dit rien ...</p>
-              <p>Pour les informations pratiques, elles seront communiquées en temps et en heure, pas de panique.</p>
-              <p>Avec tout notre amour,</p>
-              <p>Le Staff</p>
+                </div>
+              <% elsif @profile.finished? %>
+                <p>C'est tout bon <strong><%= @profile.first_name %></strong>, maintenant que tu as payé ta place, tu es parfaitement en règle. On t'attend chaud bouillant le 29 Juin 2019 avec <i><%= @team.name %>.</i></p>
+                <p>N'oublie pas de réviser tes gammes pour être prêt autant sur le plan taketike que tekenike, le niveau promet d'être solide cette année. </p>
+                <p>Nous te réitérons notre confiance dans la constitution de ton équipe, pas de bêtises.</p>
+                <p>Pour les informations pratiques, elles seront communiquées en temps et en heure, pas de panique.</p>
+                <p>Avec tout notre amour,</p>
+                <p>Le Staff</p>
+              <% end %>
+            <% elsif @profile.spectator? %>
+              <% if @profile.denied? %>
+                <p>Le Staff a malheureusement refusé votre demande ... Les places spectateurs sont très limitées, le Staff privilégie en effet les places pour les joueurs. Nous ne manquerons pas de te recontacter si jamais des places se libèrent.</p>
+              <% elsif @profile.inactive? %>
+                <p>Les places en tant que spectateur étant limitées, le Staff est en train d'étudier ta demande. Nous reviendrons très vite vers toi et tu devrais avoir une réponse sous les 2 jours. En attendant, tu peux découvrir les équipes déjà inscrites et les joueurs en cliquant sur le lien ci-dessous.</p>
+                  <div class="align-buttons">
+                    <%= link_to 'Voir toutes les équipes', teams_path, class: 'btn btn-primary' %>
+                  </div>
+              <% elsif @profile.active? %>
+                <p>Le Staff a accepté votre demande ! <%= "Petit veinard 😉." if @profile.gender == "male"%><%= "Petite veinarde 😉." if @profile.gender == "female"%> Pour valider définitivement ton inscription, il ne te reste plus qu'à payer ta place sur la plateforme de notre partenaire Lydia.</p>
+                <div class="align-buttons">
+                    <%= link_to 'Je paye ma place avec Lydia', "https://collecte.io/santerre-cup-iveme-edition-156010", class: 'btn btn-primary', target: "_blank" %>
+                </div>
+              <% elsif @profile.finished? %>
+                <p>C'est tout bon <%= @profile.first_name %>, tu as payé ta place, tu es parfaitement en règle. On t'attend chaud bouillant le 29 Juin 2019 pour encourager les joueurs et mettre le feu en tribune. Une récompense sera distribuée pour le meilleur spectateur, on dit ça on dit rien ...</p>
+                <p>Pour les informations pratiques, elles seront communiquées en temps et en heure, pas de panique.</p>
+                <p>Avec tout notre amour,</p>
+                <p>Le Staff</p>
             <% else %>
               <p>Tu n'as pas encore fait de demande ou tu n'as aucune demande en cours. Envie de rejoindre une équipe ? Ou de créer la tienne ? N'hésite pas et fonce !</p>
               <div class="align-buttons">
               <%= link_to 'Voir toutes les équipes', teams_path, class: 'btn btn-primary' %>
               </div>
             <% end %>
-          <% elsif @profile.inactive? && !@participant.nil? %>
-            <% if @participant.denied? %>
+          <% elsif @profile.player? && @profile.inactive? %>
+            <% if !@participant.nil? && @participant.denied? %>
               <p>Capitaine <%= @participant.team.user.name %> a refusé que tu rejoignes son équipe <%= @participant.team.name %> !</p>
               <p>Nous sommes désolé pour toi, mais tu vas devoir te trouver une autre équipe ou créer ta propre équipe si tu veux participer à notre bel événement.</p>
               <div class="align-buttons">
                 <%= link_to 'Voir toutes les équipes', teams_path, class: 'btn btn-primary' %>
               </div>
+            <% else %>
+              <p>Tu n'as pas encore fait de demande ou tu n'as aucune demande en cours. Envie de rejoindre une équipe ? Ou de créer la tienne ? N'hésite pas et fonce !</p>
+              <div class="align-buttons">
+              <%= link_to 'Voir toutes les équipes', teams_path, class: 'btn btn-primary' %>
+              </div>
             <% end %>
-          <% else %>
-            <% if @profile.active? && @participant.pending? %>
+          <% elsif @profile.active? %>
+            <% if @participant.pending? %>
               <% if @profile.gender == "male"  %>
                 <p>Mein lieber <%= @profile.user.name %>,</p>
               <% else %>
@@ -55,14 +76,18 @@
                   <%= submit_tag 'Annuler ma demande', data: { confirm: 'Es-tu sûr de vouloir annuler ta demande ?'}, class: 'btn btn-primary'  %>
                 <% end %>
               </div>
-            <% end %>
-            <% if @profile.active? && @participant.accepted? %>
-              <p><%= @participant.team.user.name %> a accepté votre demande. Tu es maintenant officiellement un membre de l'équipe "<%= @participant.team.name %>". Pour valider définitivement ton inscription, il ne te reste plus qu'à payer ta place sur la plateforme de notre partenaire Lydia.</p>
+            <% elsif @participant.accepted? %>
+              <% if @profile.gender == "male"  %>
+                <p>Mein lieber <%= @profile.user.name %>,</p>
+              <% else %>
+                <p>Meine liebe <%= @profile.user.name %>,</p>
+              <% end %>
+              <p><%= @participant.team.user.name %> a accepté votre demande. Tu es maintenant officiellement un membre de l'équipe <i><%= @participant.team.name %></i>. Pour valider définitivement ton inscription, il ne te reste plus qu'à payer ta place sur la plateforme de notre partenaire Lydia.</p>
+              <p>Allez hop hop hop, on se dépêche !</p>
               <%= link_to 'Je paye ma place avec Lydia', "https://collecte.io/santerre-cup-iveme-edition-156010", class: 'btn btn-primary',target: "_blank" %>
-            <% end %>
-            <% if @profile.active? && @participant.finished? %>
+            <% else @participant.finished? %>
               <p>C'est tout bon <strong><%= @profile.first_name %></strong>, maintenant que tu as payé ta place, tu es parfaitement en règle. On t'attend chaud bouillant le 29 Juin 2019 avec <i><%= @participant.team.name %>.</i></p>
-              <p>N'oublie pas de réviser tes gammes pour être prêt autant sur le plan tacetique que techenique, le niveau promet d'être solide cette année. </p>
+              <p>N'oublie pas de réviser tes gammes pour être prêt autant sur le plan taketike que tekenike, le niveau promet d'être solide cette année.</p>
               <p>Pour les informations pratiques, elles seront communiquées en temps et en heure, pas de panique.</p>
               <p>Avec tout notre amour,</p>
               <p>Le Staff</p>
