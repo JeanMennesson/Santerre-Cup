@@ -5,13 +5,17 @@
         <div class="mon_inscription_card">
           <h1>Mon inscription</h1>
             <% if @profile.captain? %>
-              <% if @profile.active? %>
+              <% if @profile.active? && @team.status == 'accepted' %>
                 <p>Cher(e) capitaine de la très heureuse équipe <i><%= @team.name %></i>, un grand bravo, ton équipe a été acceptée! Nous sommes ravis que tu nous rejoignes pour ce si bel événement.</p>
                 <p>Nous te faisons une entière et pleine confiance dans la constitution de ton équipe. Cette dernière doit être exactement la même que celle que tu nous as envoyée. Nous nous réservons le droit d'annuler la demande d'un joueur autre que ceux renseignés, sauf si cela est gentiment demandé en amont bien sûr!</p>
                 <p>Allez on oublie pas de payer sa place !</p>
                 <div class="align-buttons">
                 <%= link_to 'Je paye ma place avec Lydia', "https://collecte.io/santerre-cup-iveme-edition-156010", class: 'btn btn-primary', target: "_blank" %>
                 </div>
+              <% elsif @profile.active? && @team.status =='pending' %>
+                <p>Cher(e) capitaine de la très heureuse équipe <i><%= @team.name %></i>, ton équipe est en train d'être examiné par le Staff. Nous reviendrons vers toi très rapidement (max 2 jours) pour te valider ou non ton équipe.
+                <p>La bise,</p>
+                <p>Le Staff</p>
               <% elsif @profile.finished? %>
                 <p>C'est tout bon <strong><%= @profile.first_name %></strong>, maintenant que tu as payé ta place, tu es parfaitement en règle. On t'attend chaud bouillant le 29 Juin 2019 avec <i><%= @team.name %>.</i></p>
                 <p>N'oublie pas de réviser tes gammes pour être prêt autant sur le plan taketike que tekenike, le niveau promet d'être solide cette année. </p>
