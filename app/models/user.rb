@@ -9,6 +9,10 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   def name
-    "#{User.find(id).profile.first_name} #{User.find(id).profile.last_name}"
+    if !profile.nil?
+      "#{User.find(id).profile.first_name} #{User.find(id).profile.last_name}"
+    else
+      "#{User.find(id).email}"
+    end
   end
 end
