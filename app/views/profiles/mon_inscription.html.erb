@@ -13,7 +13,7 @@
                 <%= link_to 'Je paye ma place avec Lydia', "https://collecte.io/santerre-cup-iveme-edition-156010", class: 'btn btn-primary', target: "_blank" %>
                 </div>
               <% elsif @profile.active? && @team.status =='pending' %>
-                <p>Cher(e) capitaine de la très heureuse équipe <i><%= @team.name %></i>, ton équipe est en train d'être examiné par le Staff. Nous reviendrons vers toi très rapidement (max 2 jours) pour te valider ou non ton équipe.
+                <p>Cher(e) capitaine de la très heureuse équipe <i><%= @team.name %></i>, ton équipe est en train d'être examiné par le Staff. Nous reviendrons vers toi très rapidement (max 2 jours) pour valider ou non ton équipe.
                 <p>La bise,</p>
                 <p>Le Staff</p>
               <% elsif @profile.finished? %>
