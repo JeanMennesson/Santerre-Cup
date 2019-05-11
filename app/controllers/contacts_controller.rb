@@ -11,7 +11,7 @@ class ContactsController < ApplicationController
     @contact.request = request
     authorize @contact
     if @contact.deliver
-      # flash.now[:notice] = 'Merci pour votre message, on essaie de vous répondre au plus vite!'
+      flash.now[:error] = nil
     else
       flash.now[:error] = "Impossible d'envoyer le message."
       render :new
