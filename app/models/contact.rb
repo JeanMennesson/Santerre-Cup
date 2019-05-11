@@ -11,7 +11,7 @@ class Contact < MailForm::Base
     {
       subject: "#{name} vous a envoyé un petit mot doux",
       to: "staff@santerrecup.com",
-      from: %("#{name}" <#{staff@santerrecup.com}>)
+      from: %("#{name}" <#{"staff@santerrecup.com"}>)
     }
   end
 end
