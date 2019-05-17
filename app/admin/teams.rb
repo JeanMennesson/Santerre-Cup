@@ -5,6 +5,8 @@ ActiveAdmin.register Team do
   scope :pending
   scope :accepted
   scope :denied
+  scope :male
+  scope :female
 
   action_item :accept, only: :show do
     link_to 'Accepter', accept_admin_team_path(team), method: :put
@@ -16,6 +18,10 @@ ActiveAdmin.register Team do
 
   action_item :pending, only: :show do
     link_to 'En Attente', pending_admin_team_path(team), method: :put
+  end
+
+  action_item :finished, only: :show do
+    link_to 'Terminé', finished_admin_team_path(team), method: :put
   end
 
   member_action :accept, method: :put do
@@ -40,6 +46,12 @@ ActiveAdmin.register Team do
     redirect_to admin_team_path(team)
   end
 
+  member_action :finished, method: :put do
+    team = Team.find(params[:id])
+    team.update_attributes(status: "finished")
+    redirect_to admin_team_path(team)
+  end
+
   index do
     selectable_column
     column 'ID', :id
@@ -47,12 +59,7 @@ ActiveAdmin.register Team do
     column "Devise", :motto
     column 'Status', :status
     column 'Capitaine', :user
-    column 'Joueur 2', :player_2
-    column 'Joueur 3', :player_3
-    column 'Joueur 4', :player_4
-    column 'Joueur 5', :player_5
-    column 'Joueur 6', :player_6
-    column 'Joueur 7', :player_7
+    column 'Joueurs inscrits', :players
     column 'Joueurs proposés', :description
     actions
   end

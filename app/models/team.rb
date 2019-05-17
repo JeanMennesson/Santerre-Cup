@@ -16,4 +16,11 @@ class Team < ApplicationRecord
   def name_with_captain
     "#{name} -  Capitaine #{Team.find(id).user.name}"
   end
+
+  # def players
+  #   @team_players = Team.find(id).participants.where(status: %i[accepted finished])
+  #   @team_players.each_with_index do |player, index|
+  #     "#{index + 1}. #{player.name} / "
+  #   end
+  # end
 end
