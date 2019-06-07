@@ -41,6 +41,7 @@
             <%= link_to "Mon inscription", mon_inscription_profile_path(current_user.profile), class: "dropdown-item" %>
             <%= link_to "Mon équipe", profile_team_path(current_user.profile.id, Team.find_by(user_id: current_user.id).id), class: "dropdown-item" if current_user.profile.captain? %>
             <%= link_to "Voir les équipes", teams_path, class: "dropdown-item"%>
+            <%= link_to "Je veux un pull", new_pull_path, class: "dropdown-item" %>
             <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_23_212744) do
+ActiveRecord::Schema.define(version: 2019_06_06_195719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,16 @@ ActiveRecord::Schema.define(version: 2019_04_23_212744) do
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
+  create_table "pulls", force: :cascade do |t|
+    t.integer "gender"
+    t.string "size"
+    t.string "number"
+    t.bigint "profile_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["profile_id"], name: "index_pulls_on_profile_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "name"
     t.string "motto"
@@ -100,5 +110,6 @@ ActiveRecord::Schema.define(version: 2019_04_23_212744) do
   add_foreign_key "participants", "teams"
   add_foreign_key "participants", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "pulls", "profiles"
   add_foreign_key "teams", "users"
 end

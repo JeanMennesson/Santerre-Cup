@@ -1,0 +1,50 @@
+<div class="wrapper-gray">
+  <div class="container-fluid">
+    <h1>Commande du Pull</h1>
+    <p>Date de fin de commande : <strong>Lundi 10 Juin à 10h</strong></p>
+    <p>Prix: <strong>55€</strong></p>
+    <div class="row">
+      <div class="col col-md-6 offset-md-3">
+        <%= image_tag "maquette-pulls.jpg", class: "photo-card" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-md-6 offset-md-3">
+        <div class="santerre-form">
+          <%= simple_form_for @pull, :url => { :action => "create" } do |f| %>
+            <%= f.input :gender, label: 'Modèle', as: :radio_buttons, collection: [[ 'female', 'femme'], [ 'male', 'homme']], label_method: :second, value_method: :first %>
+            <%= f.input :size, label: 'Taille', collection: ['XS', 'S', 'M', 'L', 'XL', 'XXL'], prompt: "Choisis ta taille", selected: 'XS' %>
+            <%= f.input :number, label: 'Nombre', collection: 1..10, prompt: "Choisis le nombre de pulls que tu souhaites commander", selected: '1' %>
+            <%= f.button :submit, "Valider", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrapper-gray">
+  <div class="container-fluid">
+    <h1>Mes Commandes</h1>
+    <p>Si jamais vous voulez annuler une commande, merci de nous envoyer un message par le formulaire de contact :)</p>
+    <table class="table table-striped table-hover table-responsive-xs">
+      <thead class="team-content-center">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Modèle</th>
+          <th scope="col">Taille</th>
+          <th scope="col">Nombre</th>
+        </tr>
+      </thead>
+      <tbody class="team-content-center">
+        <% @pulls_ordered.each_with_index do |pull_ordered, index| %>
+          <tr>
+            <th scope='row'><%= index +1 %></th>
+            <td><%= "Masculin" if pull_ordered.gender == "male" %><%= "Féminin" if pull_ordered.gender == "female" %></td>
+            <td><%= pull_ordered.size %></td>
+            <td><%= pull_ordered.number %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

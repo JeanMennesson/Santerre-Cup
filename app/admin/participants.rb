@@ -1,5 +1,4 @@
 ActiveAdmin.register Participant do
-
   permit_params :team, :user, :status
 
   def name
