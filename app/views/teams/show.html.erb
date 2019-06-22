@@ -97,9 +97,9 @@
                       <p>Cette équipe est complète !</p>
                   <% end %>
                   <% if current_user.profile.gender == @team.user.profile.gender && @team.participants.accepted.count < 6 %>
-                    <% if current_user.profile.player? && current_user.profile.inactive? %>
+<!--                     <% if current_user.profile.player? && current_user.profile.inactive? %>
                         <%= button_to "Je veux rejoindre cette équipe", new_team_participant_path(@team), method: :get, class: "btn btn-success" %>
-                    <% end %>
+                    <% end %> -->
                   <% end %>
                   <%= link_to "Voir toutes les équipes", teams_path, class: 'btn btn-primary' %>
                   <%= link_to "Mettre à jour mon équipe", edit_team_path(@team), class: 'btn btn-primary' if current_user == @team.user %>
