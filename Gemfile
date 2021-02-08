@@ -23,7 +23,7 @@ gem 'mail_form'
 gem "aws-sdk-s3", require: false
 gem 'mini_magick'
 gem 'fog-aws'
-gem 'carrierwave', '~> 1.2'
+gem 'carrierwave', '~> 1.3'
 gem 'postmark-rails'
 gem 'rails-i18n'
 
